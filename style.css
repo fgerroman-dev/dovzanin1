@@ -1,0 +1,586 @@
+/* Базовые стили для всей страницы */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa; /* Мягкий, очень светлый фон */
+    color: #343a40; /* Темный, но не совсем черный текст для лучшей читаемости */
+    line-height: 1.6; /* Улучшенная межстрочный интервал */
+    -webkit-font-smoothing: antialiased; /* Сглаживание шрифтов */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; /* Системный шрифт для заголовка */
+    text-align: center;
+    margin-bottom: 8px; /* Уменьшен отступ, чтобы следующий элемент был ближе */
+    color: #1A535C; /* Глубокий сине-зеленый, элегантный цвет */
+    font-size: 2.5em; /* Крупнее для акцента */
+    font-weight: 700; /* Более жирный для важности */
+    letter-spacing: 0.5px; /* Небольшой межбуквенный интервал */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05); /* Легкая тень для объема */
+}
+/* !!! НОВЫЙ СТИЛЬ ДЛЯ ТЕКСТА "Исчезающие виды животных" (голубоватый) !!! */
+
+/* !!! НОВЫЙ СТИЛЬ ДЛЯ КОММЕНТАРИЯ "Исследуйте редкие и исчезающие виды..." (сероватый, меньше) !!! */
+.sub-description {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 35px; /* Увеличенный отступ до карты */
+    color: #6c757d; /* Приглушенный сероватый цвет */
+    font-size: 1em; /* Меньше для подтекста */
+    line-height: 1.5;
+    max-width: 800px; /* Ограничиваем ширину для лучшей читаемости */
+    margin-left: auto; /* Центрируем */
+    margin-right: auto; /* Центрируем */
+}
+.main-description {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #4A8C9B;
+    font-size: 1.3em;
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Стиль для контейнера карты */
+#map {
+    height: 700px; /* Высота карты. Можно изменить */
+    width: 100%;
+    border: none; /* Рамка убрана */
+    border-radius: 12px; /* Мягкие скругленные углы */
+    overflow: hidden; /* Обрезка содержимого по скругленным углам */
+    /* Выраженная, многослойная тень для глубины, создающая эффект парящего элемента */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff; /* Белый фон под картой на случай загрузки */
+}
+
+/* Стили для всплывающих окон (popup) */
+.leaflet-popup-content-wrapper {
+    border-radius: 10px; /* Чуть более скругленные углы для попапа */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.18); /* Более заметная тень для попапа */
+    padding: 0; /* Убираем стандартный padding, чтобы управлять им внутри */
+    background-color: #ffffff; /* Явно белый фон для попапа */
+    border: none; /* Рамка попапа также убрана */
+}
+
+.leaflet-popup-content {
+    padding: 18px 25px; /* Увеличенный внутренний отступ для "воздуха" */
+    text-align: center;
+    color: #343a40;
+    font-size: 1.1em; /* Немного крупнее текст для лучшей читаемости */
+}
+
+.leaflet-popup-content img {
+    max-width: 140px; /* Еще немного увеличим размер картинки */
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto; /* Отступы и центрирование, чуть больше отступ снизу */
+    border-radius: 8px; /* Скругленные углы для картинки */
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Тонкая рамка для картинки */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Легкая, но заметная тень для картинки */
+}
+
+.leaflet-popup-content h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    margin: 0 0 10px 0; /* Отступы */
+    color: #e74c3c; /* Красный цвет для названия вида, подчеркивающий угрозу */
+    font-size: 1.3em; /* Крупнее для акцента */
+    font-weight: 700; /* Очень жирный */
+    line-height: 1.3;
+}
+
+.leaflet-popup-content p {
+    font-size: 0.95em; /* Немного крупнее для читаемости */
+    margin: 0 0 8px 0; /* Отступы */
+    color: #555;
+}
+
+.leaflet-popup-content .status {
+    font-weight: bold;
+    color: #c0392b; /* Более глубокий красный для статуса угрозы */
+    background-color: #ffe0e0; /* Более нежный светло-красный фон для статуса */
+    padding: 6px 12px; /* Увеличенные отступы внутри статуса */
+    border-radius: 6px; /* Чуть более скругленные углы */
+    display: inline-block; /* Позволяет задавать padding и border-radius */
+    margin-top: 10px; /* Отступ сверху */
+    font-size: 0.9em; /* Немного меньше, но заметно */
+    letter-spacing: 0.3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Легкая тень для "бейдж" эффекта */
+}
+
+/* Дополнительные стили для кнопки закрытия попапа */
+.leaflet-popup-close-button {
+    color: #777; /* Цвет кнопки закрытия */
+    font-size: 26px !important; /* Крупнее */
+    top: 8px !important;
+    right: 8px !important;
+    outline: none; /* Убираем обводку при фокусе */
+}
+.leaflet-popup-close-button:hover {
+    color: #555; /* Возвращаем нейтральный цвет при наведении */
+}
+/* Стиль для контейнера кнопок фильтрации */
+#filter-buttons {
+    display: flex;
+    justify-content: center; /* Центрируем кнопки по горизонтали */
+    flex-wrap: wrap; /* Позволяет переноситься на следующую строку при необходимости */
+    gap: 12px; /* Расстояние между кнопками */
+    margin: 20px 0; /* Отступ сверху и снизу */
+}
+
+/* Стиль для каждой кнопки */
+#filter-buttons button {
+    background-color: #1A535C; /* Глубокий сине-зеленый цвет */
+    color: #ffffff; /* Белый текст */
+    border: none; /* Без рамки */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 8px; /* Скругленные углы */
+    font-size: 1em; /* Размер шрифта */
+    cursor: pointer; /* Курсор при наведении */
+    font-weight: 600; /* Полужирный текст */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта "поднятости" */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Плавные эффекты при наведении */
+}
+
+/* Эффект при наведении */
+#filter-buttons button:hover {
+    background-color: #148693; /* Более насыщенный цвет при наведении */
+    transform: translateY(-2px); /* Небольшой подъем */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Усиленная тень */
+}
+
+/* Для активной/выбранной кнопки, например, можно добавить класс .active */
+#filter-buttons button.active {
+    background-color: #0d6efd; /* Другой цвет для выбранной кнопки */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+/* Стили для футера */
+.footer {
+  background: linear-gradient(135deg, #1a535c 0%, #0d3440 100%);
+  color: #ffffff;
+  padding: 40px 20px 20px;
+  margin-top: 40px;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.author-info {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.author-info h3 {
+  color: #4ecdc4;
+  margin-top: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.author-name {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 15px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+}
+
+.author-name::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #4ecdc4;
+  border-radius: 2px;
+}
+
+.project-description {
+  color: #b0e6e3;
+  line-height: 1.6;
+  font-size: 1em;
+  margin-top: 20px;
+}
+
+.footer-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.footer-section {
+  padding: 20px;
+}
+
+.footer-section h4 {
+  color: #4ecdc4;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.footer-section p,
+.footer-section li {
+  color: #e0f2f1;
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.footer-section li::before {
+  content: '•';
+  color: #4ecdc4;
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #90a4ae;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+/* Анимации при наведении */
+.author-info:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.footer-section:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 15px 15px;
+    margin-top: 30px;
+  }
+  
+  .author-name {
+    font-size: 1.8em;
+  }
+  
+  .footer-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-section {
+    padding: 15px 0;
+  }
+}
+
+/* Стили для кастомных маркеров */
+.custom-marker {
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+}
+
+/* Стили для легенды */
+.legend {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 220px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.legend:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.legend h4 {
+  margin: 0 0 12px 0;
+  color: #1A535C;
+  font-size: 1.1em;
+  font-weight: 700;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+}
+
+.legend-note {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+/* Адаптивность для легенды */
+@media (max-width: 768px) {
+  .legend {
+    max-width: 180px;
+    padding: 12px;
+  }
+  
+  .legend h4 {
+    font-size: 1em;
+  }
+  
+  .legend-item {
+    font-size: 0.9em;
+  }
+}
+
+/* Дополнительные стили для всплывающих окон */
+.custom-popup {
+  text-align: center;
+}
+
+.custom-popup strong {
+  color: #1A535C;
+  font-weight: 600;
+}
+/* Стили для цветных маркеров */
+.custom-marker {
+  transition: transform 0.2s ease;
+}
+
+.custom-marker:hover {
+  transform: scale(1.2);
+}
+
+/* Улучшенные стили для легенды */
+.legend {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 220px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.legend:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.legend-header {
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 8px;
+}
+
+.legend-header h4 {
+  margin: 0;
+  color: #1A535C;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.legend-content {
+  margin: 10px 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.95em;
+  color: #333;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.legend-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.legend-color {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.legend-text {
+  font-weight: 500;
+  color: #444;
+}
+
+.legend-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: #666;
+  font-size: 0.85em;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Стили для статусов в попапах */
+.status {
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.9em;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-исчезающий {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.status-на-грани-исчезновения {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.status-уязвимый {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-в-критической-опасности {
+  background-color: #fce4ec;
+  color: #ad1457;
+}
+
+.status-близкий-к-угрожаемому-положению {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+/* Адаптивность для легенды */
+@media (max-width: 768px) {
+  .legend {
+    max-width: 180px;
+    padding: 10px 12px;
+    font-size: 0.9em;
+  }
+  
+  .legend-header h4 {
+    font-size: 1em;
+  }
+  
+  .legend-item {
+    margin-bottom: 8px;
+    font-size: 0.85em;
+  }
+  
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+}
+
+/* Улучшенные стили для всплывающих окон */
+.custom-popup {
+  text-align: center;
+  max-width: 300px;
+}
+
+.custom-popup img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px auto;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-popup h3 {
+  color: #1A535C;
+  margin-top: 0;
+  font-size: 1.3em;
+  line-height: 1.3;
+}
+
+.custom-popup p {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.custom-popup strong {
+  color: #1A535C;
+  font-weight: 600;
+}
